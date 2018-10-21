@@ -12,17 +12,23 @@ npm start
 ```
 
 
+## Configure Rules
+
+Configure rules via the [`.bpmnlintrc`](.bpmnlintrc) file.
+
+
 ## Start Hacking
 
 Create or modify rules in the [`plugin/rules`](./plugin/rules) directory.
 
-Define default configurations to use in the [plugin entry point](./plugin/index.js).
+Expose default configurations via the [plugin entry point](./plugin/index.js).
 
 Save your modifications. See the playground reload reflect your changes in real-time :rocket:.
 
 
 ## Resources
 
+* [bpmnlint](https://github.com/bpmn-io/bpmnlint)
 * [bpmnlint-plugin-example](https://github.com/bpmn-io/bpmnlint-plugin-example)
 * [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpmnlint)
 
