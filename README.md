@@ -2,6 +2,8 @@
 
 A playground to implement and try out [bpmnlint](https://github.com/bpmn-io/bpmnlint) diagram validation rules.
 
+![playground](./docs/playground.png)
+
 
 ## Run the Playground
 
@@ -10,6 +12,8 @@ npm install
 
 npm start
 ```
+
+This opens the playground in your browser.
 
 
 ## Configure Rules
