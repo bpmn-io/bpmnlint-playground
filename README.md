@@ -21,13 +21,17 @@ This opens the playground in your browser.
 Configure rules via the [`.bpmnlintrc`](.bpmnlintrc) file.
 
 
-## Start Hacking
+## Hack the Playground
 
-Create or modify rules in the [`plugin/rules`](./plugin/rules) directory.
+The project includes a rules plug-in in the [`plugin`](./plugin) directory. It exposes rules under the `playground` namespace.
+Change the contents in that directory and see the playground app reflect your changes in real-time.
 
-Expose default configurations via the [plugin entry point](./plugin/index.js).
+A few things you can do:
 
-Save your modifications. See the playground reload reflect your changes in real-time :rocket:.
+* Create or modify rules in the [`plugin/rules`](./plugin/rules) directory.
+* Expose default configurations via the [plugin entry point](./plugin/index.js).
+
+:rocket:
 
 
 ## Resources
