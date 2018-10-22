@@ -1,6 +1,6 @@
 # bpmnlint-playground
 
-A playground to implement and try out [bpmnlint](https://github.com/bpmn-io/bpmnlint) diagram validation rules.
+A playground to try out [bpmnlint](https://github.com/bpmn-io/bpmnlint) diagram validation and implement and new rules.
 
 ![playground](./docs/screenshot.png)
 
