@@ -7,31 +7,28 @@ A playground to implement and try out [bpmnlint](https://github.com/bpmn-io/bpmn
 
 ## Run the Playground
 
+To open the playground in your browser type
+
 ```
 npm install
-
 npm start
 ```
 
-This opens the playground in your browser.
 
+## Features
 
-## Configure Rules
+#### App
 
-Configure rules via the [`.bpmnlintrc`](.bpmnlintrc) file.
+* Validate your diagrams
+* Drop diagrams into the page to open them and trigger validation
+* Apply changes and download the diagram
 
+#### Rules
 
-## Hack the Playground
-
-The project includes a rules plug-in in the [`plugin`](./plugin) directory. It exposes rules under the `playground` namespace.
-Change the contents in that directory and see the playground app reflect your changes in real-time.
-
-A few things you can do:
-
-* Create or modify rules in the [`plugin/rules`](./plugin/rules) directory.
-* Expose default configurations via the [plugin entry point](./plugin/index.js).
-
-:rocket:
+* Configure checked lint/validation rules via the [`.bpmnlintrc`](.bpmnlintrc) file
+* Create or modify rules in the [`./plugin/rules`](./plugin/rules) directory
+* Expose default configurations using the [plugin entry point](./plugin/index.js)
+* See how rule changes are reflected in the app in real time
 
 
 ## Resources
