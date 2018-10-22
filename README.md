@@ -2,7 +2,7 @@
 
 A playground to implement and try out [bpmnlint](https://github.com/bpmn-io/bpmnlint) diagram validation rules.
 
-![playground](./docs/playground.png)
+![playground](./docs/screenshot.png)
 
 
 ## Run the Playground
