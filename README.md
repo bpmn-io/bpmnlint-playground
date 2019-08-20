@@ -7,12 +7,13 @@ A playground to try out [bpmnlint](https://github.com/bpmn-io/bpmnlint) diagram 
 
 ## Run the Playground
 
-To open the playground in your browser type
+Open the playground in your browser
 
 ```
-npm install
-npm start
+npx bpmnlint-playground
 ```
+
+It will watch your local `.bpmnlintrc` as well as the `./rules` folder for changes and refresh the browser window accordingly.
 
 
 ## Features
