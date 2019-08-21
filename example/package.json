@@ -1,0 +1,23 @@
+{
+  "name": "bpmnlint-playground-test",
+  "version": "0.0.0",
+  "private": true,
+  "description": "bpmnlint playground test project",
+  "author": {
+    "name": "Nico Rehwaldt",
+    "url": "https://github.com/nikku"
+  },
+  "scripts": {
+    "postinstall": "install-local",
+    "start": "npx bpmnlint-playground simple.bpmn"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "bpmnlint": "^5.1.2",
+    "install-local": "^1.0.0"
+  },
+  "localDependencies": {
+    "bpmnlint-playground": "../..",
+    "bpmnlint-plugin-local": "plugin"
+  }
+}
