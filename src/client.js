@@ -1,8 +1,6 @@
 import lintModule from 'bpmn-js-bpmnlint';
 
-import BpmnModeler from 'bpmn-js/lib/Modeler';
-
-import bpmnlintConfig from '../.bpmnlintrc';
+import BpmnModeler from 'bpmn-js/dist/bpmn-modeler.production.min.js'
 
 import defaultDiagramXML from '../diagrams/example.bpmn';
 
@@ -10,8 +8,7 @@ import fileDrop from 'file-drops';
 
 import download from 'downloadjs';
 
-
-var diagramXML = window.localStorage.getItem('diagramXML');
+bpmnlintConfig = window.bpmnlintConfig || {};
 
 var modeler = new BpmnModeler({
   container: '#canvas',
@@ -26,8 +23,9 @@ var modeler = new BpmnModeler({
   }
 });
 
-
-modeler.importXML(diagramXML || defaultDiagramXML);
+loadDiagram().then(diagramXML => modeler.importXML(diagramXML)).catch(err => {
+  window.alert(err.message);
+});
 
 modeler.on('linting.toggle', function(event) {
 
@@ -88,5 +86,28 @@ function setUrlParam(name, value) {
 function getUrlParam(name) {
   var url = new URL(window.location.href);
 
-  return url.searchParams.has(name);
+  return url.searchParams.get(name);
+}
+
+async function loadDiagram() {
+
+  var diagramURL = getUrlParam('diagram');
+
+  if (diagramURL) {
+    return fetch(diagramURL).then(r => {
+      if (r.ok) {
+        return r.text();
+      }
+
+      throw new Error('failed to load ' + diagramURL);
+    });
+  }
+
+  var diagramXML = window.localStorage.getItem('diagramXML');
+
+  if (diagramXML) {
+    return diagramXML;
+  }
+
+  return defaultDiagramXML;
 }
