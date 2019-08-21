@@ -1,9 +1,7 @@
 {
   "name": "bpmnlint-playground",
   "version": "0.0.0",
-  "private": true,
   "description": "A bpmnlint playground",
-  "main": "index.js",
   "bin": {
     "bpmnlint-playground": "./bin/bpmnlint-playground"
   },
