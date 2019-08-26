@@ -1,6 +1,6 @@
 {
   "name": "bpmnlint-playground",
-  "version": "0.1.0-beta.1",
+  "version": "0.1.0-beta.2",
   "description": "A bpmnlint playground",
   "bin": {
     "bpmnlint-playground": "./bin/bpmnlint-playground"
