@@ -19,7 +19,8 @@ var modeler = new BpmnModeler({
     lintModule
   ],
   linting: {
-    bpmnlint: bpmnlintConfig
+    bpmnlint: bpmnlintConfig,
+    active: getUrlParam('linting')
   },
   keyboard: {
     bindTo: document
@@ -34,18 +35,6 @@ modeler.on('linting.toggle', function(event) {
   var active = event.active;
 
   setUrlParam('linting', active);
-});
-
-modeler.on('import.done', function() {
-  var active = getUrlParam('linting');
-
-  var linting = modeler.get('linting');
-
-  if (active) {
-    linting.activateLinting();
-  } else {
-    linting.deactivateLinting();
-  }
 });
 
 modeler.on('import.parse.start', function(event) {
