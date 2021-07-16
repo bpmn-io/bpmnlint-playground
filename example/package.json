@@ -17,7 +17,7 @@
     "install-local": "^1.0.0"
   },
   "localDependencies": {
-    "bpmnlint-playground": "../..",
+    "bpmnlint-playground": "..",
     "bpmnlint-plugin-local": "plugin"
   }
 }
