@@ -12,7 +12,7 @@ const rollupConfig = path.join(__dirname, '..', 'config', 'rollup.run-config.js'
 
 if (!fs.existsSync('.bpmnlintrc')) {
   console.error(`
-Could not find local .bpmnlintrc file, please create one:
+Cannot not find local .bpmnlintrc file, please create one:
 
   npx bpmnlint --init
 
@@ -22,6 +22,16 @@ Refer to https://github.com/bpmn-io/bpmnlint#configuration for details.
   process.exit(1);
 }
 
+try {
+  require.resolve('bpmnlint');
+} catch (err) {
+  console.error(`
+Cannot find <bpmnlint>, please install it:
+
+  npm install -D bpmnlint
+`);
+
+}
 
 const argv = process.argv.slice(2);
 
