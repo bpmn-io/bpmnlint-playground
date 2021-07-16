@@ -1,5 +1,7 @@
 # bpmnlint-playground
 
+[![CI](https://github.com/bpmn-io/bpmnlint-playground/actions/workflows/CI.yml/badge.svg)](https://github.com/bpmn-io/bpmnlint-playground/actions/workflows/CI.yml)
+
 A playground to try out [bpmnlint](https://github.com/bpmn-io/bpmnlint) diagram validation and implement and new rules.
 
 ![playground](./docs/screenshot.png)
