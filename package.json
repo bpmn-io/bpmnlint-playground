@@ -35,5 +35,10 @@
     "rollup-plugin-bpmnlint": "^0.1.4",
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-serve": "^1.1.0"
-  }
+  },
+  "files": [
+    "bin",
+    "config",
+    "public"
+  ]
 }
