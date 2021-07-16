@@ -1,14 +1,6 @@
 #!/usr/bin/env node
 
-const execa = require('execa');
-
-const path = require('path');
-
 const fs = require('fs');
-
-const rollup = require.resolve('rollup/dist/bin/rollup');
-
-const rollupConfig = path.join(__dirname, '..', 'config', 'rollup.run-config.js');
 
 if (!fs.existsSync('.bpmnlintrc')) {
   console.error(`
@@ -20,17 +12,6 @@ Refer to https://github.com/bpmn-io/bpmnlint#configuration for details.
 `);
 
   process.exit(1);
-}
-
-try {
-  require.resolve('bpmnlint');
-} catch (err) {
-  console.error(`
-Cannot find <bpmnlint>, please install it:
-
-  npm install -D bpmnlint
-`);
-
 }
 
 const argv = process.argv.slice(2);
@@ -53,14 +34,58 @@ if (arg) {
 }
 
 
-try {
-  execa.sync(rollup, ['-w', '-c', rollupConfig ], {
-    stdout: 'inherit',
-    stderr: 'inherit',
-    env: {
-      BPMNLINT_PLAYGROUND_OPEN_DIAGRAM: arg
+async function run(diagram) {
+  const path = require('path');
+
+  const rollup = require('rollup');
+  const loadRollupConfig = require('rollup/dist/loadConfigFile');
+
+  const exitHook = require('exit-hook');
+
+  const rollupConfig = path.join(__dirname, '..', 'config', 'rollup.run-config.js');
+
+  // share diagram with app
+  process.env.BPMNLINT_PLAYGROUND_OPEN_DIAGRAM = diagram;
+
+  const {
+    options,
+    warnings
+  } = await loadRollupConfig(rollupConfig, { format: 'es' });
+
+  // log all found warnings
+  warnings.flush();
+
+  // create watcher
+  const watcher = rollup.watch(options.map(options => ({
+    ...options,
+    onwarn(warning) {
+      warnings.add(warning);
+    }
+  })));
+
+  watcher.on('event', event => {
+
+    const {
+      result,
+      code
+    } = event;
+
+    if (result) {
+      result.close();
+    }
+
+    if (code === 'END') {
+      warnings.flush();
     }
   });
-} catch (err) {
-  process.exit(err.exitCode);
+
+  exitHook(() => {
+    watcher.close();
+  });
 }
+
+run(arg).catch(err => {
+  console.error('failed to start bpmnlint-playground', err);
+
+  process.exit(1);
+});
