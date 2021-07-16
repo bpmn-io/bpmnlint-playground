@@ -7,8 +7,8 @@ import exitHook from 'exit-hook';
 import livereload from 'rollup-plugin-livereload';
 import serve from 'rollup-plugin-serve';
 
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 
 import bpmnlint from 'rollup-plugin-bpmnlint';
 
