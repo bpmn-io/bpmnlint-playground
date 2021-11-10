@@ -45,9 +45,9 @@ export default {
       openPage: `/?linting=1${diagram ? `&diagram=${encodeURIComponent(diagram)}` : ''}`,
       open: true,
       contentBase: [
+        tmpPublicDir,
         process.cwd(),
-        publicDir,
-        tmpPublicDir
+        publicDir
       ],
     }),
     livereload({
