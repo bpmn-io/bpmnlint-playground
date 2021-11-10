@@ -41,6 +41,7 @@ export default {
     commonjs(),
     bpmnlint(),
     serve({
+      verbose: false,
       openPage: `/?linting=1${diagram ? `&diagram=${encodeURIComponent(diagram)}` : ''}`,
       open: true,
       contentBase: [
@@ -50,7 +51,8 @@ export default {
       ],
     }),
     livereload({
-      watch: tmpPublicDir
+      watch: tmpPublicDir,
+      verbose: false
     })
   ],
   watch: {
