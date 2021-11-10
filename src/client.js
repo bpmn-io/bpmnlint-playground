@@ -8,54 +8,67 @@ import fileDrop from 'file-drops';
 
 import download from 'downloadjs';
 
-bpmnlintConfig = window.bpmnlintConfig || {};
 
-var modeler = new BpmnModeler({
-  container: '#canvas',
-  additionalModules: [
-    lintModule
-  ],
-  linting: {
-    bpmnlint: bpmnlintConfig,
-    active: getUrlParam('linting')
-  },
-  keyboard: {
-    bindTo: document
-  }
-});
+function loadConfig() {
+  return import('./bpmnlint-config.js').catch(err => {
+    console.log(err);
 
-loadDiagram().then(diagramXML => modeler.importXML(diagramXML)).catch(err => {
-  window.alert(err.message);
-});
+    return {};
+  });
+}
 
-modeler.on('linting.toggle', function(event) {
+function run(bpmnlintConfig) {
 
-  var active = event.active;
-
-  setUrlParam('linting', active);
-});
-
-modeler.on('import.parse.start', function(event) {
-  var xml = event.xml;
-
-  window.localStorage.setItem('diagramXML', xml);
-});
-
-var dndHandler = fileDrop('Drop BPMN Diagram here.', function(files) {
-  modeler.importXML(files[0].contents);
-});
-
-document.querySelector('#download-button').addEventListener('click', function(event) {
-
-  modeler.saveXML({ format: true }, function(err, xml) {
-    if (!err) {
-      download(xml, 'diagram.bpmn', 'application/xml');
+  var modeler = new BpmnModeler({
+    container: '#canvas',
+    additionalModules: [
+      lintModule
+    ],
+    linting: {
+      bpmnlint: bpmnlintConfig,
+      active: getUrlParam('linting')
+    },
+    keyboard: {
+      bindTo: document
     }
   });
-});
 
-document.querySelector('body').addEventListener('dragover', dndHandler);
+  loadDiagram().then(diagramXML => modeler.importXML(diagramXML)).catch(err => {
+    window.alert(err.message);
+  });
 
+  modeler.on('linting.toggle', function(event) {
+
+    var active = event.active;
+
+    setUrlParam('linting', active);
+  });
+
+  modeler.on('import.parse.start', function(event) {
+    var xml = event.xml;
+
+    window.localStorage.setItem('diagramXML', xml);
+  });
+
+  var dndHandler = fileDrop('Drop BPMN Diagram here.', function(files) {
+    modeler.importXML(files[0].contents);
+  });
+
+  document.querySelector('#download-button').addEventListener('click', function(event) {
+
+    modeler.saveXML({ format: true }, function(err, xml) {
+      if (!err) {
+        download(xml, 'diagram.bpmn', 'application/xml');
+      }
+    });
+  });
+
+  document.querySelector('body').addEventListener('dragover', dndHandler);
+
+}
+
+
+loadConfig().then(run);
 
 // helpers /////////////////////////////////
 

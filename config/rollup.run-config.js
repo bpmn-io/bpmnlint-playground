@@ -33,10 +33,8 @@ const diagram = process.env.BPMNLINT_PLAYGROUND_OPEN_DIAGRAM;
 export default {
   input: '.bpmnlintrc',
   output: {
-    format: 'iife',
-    name: 'bpmnlintConfig',
-    file: tmpConfigFile,
-    exports: 'named'
+    format: 'es',
+    file: tmpConfigFile
   },
   plugins: [
     resolve(),
@@ -47,8 +45,8 @@ export default {
       open: true,
       contentBase: [
         process.cwd(),
-        tmpPublicDir,
-        publicDir
+        publicDir,
+        tmpPublicDir
       ],
     }),
     livereload({
