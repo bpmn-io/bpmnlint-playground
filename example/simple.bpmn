@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.10.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" exporter="Camunda Modeler" exporterVersion="1.10.0">
   <bpmn:process id="Process_1" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1fai50n">
       <bpmn:outgoing>SequenceFlow_0z7a9lp</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:task id="Task_1b6h5z4">
+    <bpmn:manualTask id="Task_1b6h5z4">
       <bpmn:incoming>SequenceFlow_0z7a9lp</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_10nkxkj</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:manualTask>
     <bpmn:sequenceFlow id="SequenceFlow_0z7a9lp" sourceRef="StartEvent_1fai50n" targetRef="Task_1b6h5z4" />
     <bpmn:endEvent id="EndEvent_0bubrzs">
       <bpmn:incoming>SequenceFlow_10nkxkj</bpmn:incoming>

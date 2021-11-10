@@ -2,7 +2,8 @@ module.exports = {
   configs: {
     recommended: {
       rules: {
-        'local/target-namespace': 'error'
+        'local/target-namespace': 'error',
+        'local/no-manual-task': 'warn'
       }
     },
     all: {
