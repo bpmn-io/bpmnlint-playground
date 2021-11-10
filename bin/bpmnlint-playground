@@ -1,54 +1,68 @@
 #!/usr/bin/env node
 
+const path = require('path');
 const fs = require('fs');
 
-if (!fs.existsSync('.bpmnlintrc')) {
-  console.error(`
-Cannot not find local .bpmnlintrc file, please create one:
+const bpmnlintrcPath = path.join(process.cwd(), '.bpmnlintrc');
 
-  npx bpmnlint --init
 
-Refer to https://github.com/bpmn-io/bpmnlint#configuration for details.
-`);
+async function run() {
 
-  process.exit(1);
-}
+  const argv = process.argv.slice(2);
 
-const argv = process.argv.slice(2);
+  const [ arg ] = argv;
 
-const [ arg ] = argv;
+  if (arg === '--help') {
+    console.log(`usage: bpmnlint-playground [diagram]`);
 
-if (arg === '--help') {
-  console.log('usage: bpmnlint-playground [diagram]');
-
-  process.exit(0);
-}
-
-if (arg) {
-
-  const path = require('path');
-
-  const relativePath = path.relative(process.cwd(), path.resolve(arg));
-
-  if (relativePath.startsWith('../')) {
-    console.error(`diagram <${arg}> must be within working directory`);
-
-    process.exit(1);
+    return;
   }
 
-  if (!fs.existsSync(arg)) {
-    console.error(`diagram <${arg}> does not exist`);
+  if (!fs.existsSync(bpmnlintrcPath)) {
+    console.error(`
+  Cannot not find local .bpmnlintrc file, please create one:
 
-    process.exit(1);
+    npx bpmnlint --init
+
+  Refer to https://github.com/bpmn-io/bpmnlint#configuration for details.
+
+  Alternatively, run this command in a bpmnlint-plugin folder:
+
+    npx create-bpmnlint-plugin my-plugin
+
+  Refer to https://github.com/nikku/create-bpmnlint-plugin#usage for usage.
+  `);
+
+    return process.exit(1);
   }
 
+  if (arg) {
+
+    const relativePath = path.relative(process.cwd(), path.resolve(arg));
+
+    if (relativePath.startsWith('../')) {
+      console.error(`diagram <${arg}> must be within working directory`);
+
+      return process.exit(1);
+    }
+
+    if (!fs.existsSync(arg)) {
+      console.error(`diagram <${arg}> does not exist`);
+
+      return process.exit(1);
+    }
+
+  }
+
+  const { run: runPlayground } = require('./playground');
+
+  console.log('Opening playground...');
+
+  return runPlayground(arg);
 }
 
-const { run } = require('./playground');
 
-console.log('Opening playground...');
-
-run(arg).catch(err => {
+run().catch(err => {
   console.error('failed to start bpmnlint-playground', err);
 
   process.exit(1);
