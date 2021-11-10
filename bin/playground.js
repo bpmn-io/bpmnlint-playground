@@ -5,24 +5,6 @@ const loadRollupConfig = require('rollup/dist/loadConfigFile');
 
 const exitHook = require('exit-hook');
 
-class Hints {
-  constructor() {
-    this._h = [];
-  }
-
-  add(hint) {
-    this._h.push(hint);
-  }
-
-  flush() {
-    this._h.map(hint => {
-      console.log(hint);
-    });
-
-    this._h.length = 0;
-  }
-}
-
 
 async function run(diagram) {
   const rollupConfig = path.join(__dirname, '..', 'config', 'rollup.run-config.js');
@@ -37,8 +19,6 @@ async function run(diagram) {
 
   warnings.flush();
 
-  const hints = new Hints();
-
   const watchOptions = options.map(options => ({
     ...options,
     onwarn(warning) {
@@ -48,7 +28,6 @@ async function run(diagram) {
         source
       } = warning;
 
-      console.log(warning);
       warnings.add(warning);
     }
   }));
@@ -59,6 +38,7 @@ async function run(diagram) {
 
     const {
       result,
+      error,
       code
     } = event;
 
@@ -67,10 +47,12 @@ async function run(diagram) {
     }
 
     if (code === 'ERROR') {
-      console.log(event);
+      warnings.add(error);
     }
 
     if (code === 'END') {
+      console.log(warnings.count > 0 ? 'Bundling failed.' : 'Bundled.');
+
       warnings.flush();
     }
   });
