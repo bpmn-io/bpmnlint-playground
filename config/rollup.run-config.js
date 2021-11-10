@@ -30,9 +30,6 @@ exitHook(() => {
 
 const diagram = process.env.BPMNLINT_PLAYGROUND_OPEN_DIAGRAM;
 
-
-console.log('Opening playground...');
-
 export default {
   input: '.bpmnlintrc',
   output: {

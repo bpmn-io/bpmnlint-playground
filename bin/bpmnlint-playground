@@ -33,56 +33,9 @@ if (arg) {
   }
 }
 
+const { run } = require('./playground');
 
-async function run(diagram) {
-  const path = require('path');
-
-  const rollup = require('rollup');
-  const loadRollupConfig = require('rollup/dist/loadConfigFile');
-
-  const exitHook = require('exit-hook');
-
-  const rollupConfig = path.join(__dirname, '..', 'config', 'rollup.run-config.js');
-
-  // share diagram with app
-  process.env.BPMNLINT_PLAYGROUND_OPEN_DIAGRAM = diagram;
-
-  const {
-    options,
-    warnings
-  } = await loadRollupConfig(rollupConfig, { format: 'es' });
-
-  // log all found warnings
-  warnings.flush();
-
-  // create watcher
-  const watcher = rollup.watch(options.map(options => ({
-    ...options,
-    onwarn(warning) {
-      warnings.add(warning);
-    }
-  })));
-
-  watcher.on('event', event => {
-
-    const {
-      result,
-      code
-    } = event;
-
-    if (result) {
-      result.close();
-    }
-
-    if (code === 'END') {
-      warnings.flush();
-    }
-  });
-
-  exitHook(() => {
-    watcher.close();
-  });
-}
+console.log('Opening playground...');
 
 run(arg).catch(err => {
   console.error('failed to start bpmnlint-playground', err);
