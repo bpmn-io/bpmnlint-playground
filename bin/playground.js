@@ -53,11 +53,7 @@ async function run(diagram) {
     }
   }));
 
-  console.log(watchOptions);
-
   const watcher = rollup.watch(watchOptions);
-
-  console.log('WATCHEDDD');
 
   watcher.on('event', event => {
 
