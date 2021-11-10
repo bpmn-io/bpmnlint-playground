@@ -9,40 +9,31 @@ A playground to try out [bpmnlint](https://github.com/bpmn-io/bpmnlint) diagram 
 
 ## Run the Playground
 
-```
-npx bpmnlint-playground
-```
-
-
-## Features
-
-### Test your bpmnlint Configuration
-
 Run the playground in any directory with a `.bpmnlintrc` file:
 
-```
+```sh
 npx bpmnlint-playground
 ```
 
-It will watch your local [`.bpmnlintrc`](https://github.com/bpmn-io/bpmnlint#configuration) as well as linked rules.
 
+During plug-in development the playground can be useful to test rules in action:
 
-### Create and Test your bpmnlint Plug-in
-
-Run the playground in a bpmnlint plug-in project and test rules in action.
-
-```
+```sh
 # create a plugin with the name <foo>
-npx create-bpmnlint-plugin foo && cd foo
+npx create-bpmnlint-plugin foo
+cd foo
 
 # install dependencies
 npm install
+
+# load recommended rules
+echo '{ "extends": "plugin:foo/recommended" }' > .bpmnlintrc
 
 # run playground
 npx bpmnlint-playground
 ```
 
-It will watch your local [`.bpmnlintrc`](https://github.com/bpmn-io/bpmnlint#configuration) as well as your plug-in assets and refresh accordingly.
+Once started, the playground watches your local [`.bpmnlintrc` file](https://github.com/bpmn-io/bpmnlint#configuration), rebuilds it on change, and refreshes the view accordingly.
 
 
 ## Resources
