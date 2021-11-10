@@ -59,20 +59,47 @@
       position: absolute;
       bottom: 20px;
       left: 20px;
-
-      background-color: #EEE;
-      padding: 5px 10px;
-      border: none;
-      color: #999;
-      display: flex;
-      align-items: center;
-      outline: none;
-      font-weight: bold;
     }
 
-    #download-button:hover {
-      background-color: #DDD;
-      color: #888;
+    .links {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+    }
+
+    .link {
+      color: var(--color-link, #212121);
+      display: inline-block;
+      padding: 6px 10px;
+      font-size: 16px;
+      border-radius: 2px;
+      border: none;
+      background-color: var(--color-link-bg, #EFEFEF);
+      text-decoration: none;
+    }
+
+    .link:hover {
+      color: var(--token-simulation-white, #FFFFFF);
+      background-color: var(--token-simulation-green-base-44, #10D070);
+    }
+
+    .link + .link {
+      margin-left: 20px;
+    }
+
+    /** file-drops */
+
+    .drop-message {
+      position: absolute;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--color-link-bg, #EFEFEF);
+      border-radius: 2px;
+      padding: 6px 12px;
+      font-size: 16px;
+      color: var(--color-link, #212121);
+      user-select: none;
     }
   </style>
 
@@ -85,9 +112,14 @@
 <body>
   <div id="canvas"></div>
 
-  <button id="download-button">Download Diagram</button>
+  <div class="drop-message"><strong>Hint:</strong> Drop a BPMN file to validate it.</div>
 
-  <script src="bpmnlint-config.js"></script>
+  <div class="links">
+    <a href="https://github.com/bpmn-io/bpmnlint-playground" class="link" target="_blank" rel="noopener">View on GitHub</a>
+  </div>
+
+  <button id="download-button" class="link">Download Diagram</button>
+
   <script src="client.js"></script>
 </body>
 </html>
