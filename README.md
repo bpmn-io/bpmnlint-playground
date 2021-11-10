@@ -24,7 +24,7 @@ Run the playground in any directory with a `.bpmnlintrc` file:
 npx bpmnlint-playground
 ```
 
-It will watch your local [`.bpmnlintrc`](https://github.com/bpmn-io/bpmnlint#configuration) as linked rules.
+It will watch your local [`.bpmnlintrc`](https://github.com/bpmn-io/bpmnlint#configuration) as well as linked rules.
 
 
 ### Create and Test your bpmnlint Plug-in
