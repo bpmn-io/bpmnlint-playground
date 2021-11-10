@@ -9,8 +9,10 @@ const exitHook = require('exit-hook');
 async function run(diagram) {
   const rollupConfig = path.join(__dirname, '..', 'config', 'rollup.run-config.js');
 
-  // share diagram with app
-  process.env.BPMNLINT_PLAYGROUND_OPEN_DIAGRAM = diagram;
+  if (diagram) {
+    // share diagram with app
+    process.env.BPMNLINT_PLAYGROUND_OPEN_DIAGRAM = diagram;
+  }
 
   const {
     options,
