@@ -26,11 +26,22 @@ if (arg === '--help') {
 
 if (arg) {
 
-  if (!fs.existsSync(arg)) {
-    console.error(`diagram ${arg} does not exist`);
+  const path = require('path');
+
+  const relativePath = path.relative(process.cwd(), path.resolve(arg));
+
+  if (relativePath.startsWith('../')) {
+    console.error(`diagram <${arg}> must be within working directory`);
 
     process.exit(1);
   }
+
+  if (!fs.existsSync(arg)) {
+    console.error(`diagram <${arg}> does not exist`);
+
+    process.exit(1);
+  }
+
 }
 
 const { run } = require('./playground');
