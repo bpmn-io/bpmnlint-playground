@@ -5,6 +5,15 @@ const fs = require('fs');
 
 const bpmnlintrcPath = path.join(process.cwd(), '.bpmnlintrc');
 
+const colors = require('ansi-colors');
+
+colors.enabled = require('color-support').hasBasic;
+
+const {
+  magenta,
+  bold,
+  grey
+} = colors;
 
 function getLocalPluginName() {
 
@@ -26,6 +35,14 @@ function getLocalPluginName() {
 }
 
 
+function cmd(str) {
+  return bold(magenta(str));
+}
+
+function highlight(str) {
+  return bold(str);
+}
+
 async function run() {
 
   const argv = process.argv.slice(2);
@@ -43,24 +60,24 @@ async function run() {
     const pluginName = getLocalPluginName();
 
     console.error(`
-  Cannot not find local .bpmnlintrc file, please create one:
+  Cannot not find local ${highlight('.bpmnlintrc')} file, please create one:
 
-    npx bpmnlint --init
+    ${cmd('npx bpmnlint --init')}
 
   Refer to https://github.com/bpmn-io/bpmnlint#configuration for details.
   `);
 
     if (pluginName) {
       console.error(`
-  Alternatively, initialize a configuration based on <${pluginName}/recommended>:
+  Alternatively, initialize a config based on this plug-ins ${highlight(`recommended`)} rules:
 
-    echo '{ "extends": "plugin:${pluginName}/recommended" }' > .bpmnlintrc
+    ${cmd(`echo '{ "extends": "plugin:${pluginName}/recommended" }' > .bpmnlintrc`)}
         `)
     } else {
       console.error(`
   Alternatively, create a new bpmnlint-plugin first:
 
-    npx create-bpmnlint-plugin my-plugin
+    ${cmd('npx create-bpmnlint-plugin my-plugin')}
 
   Refer to https://github.com/nikku/create-bpmnlint-plugin#usage for usage.
       `);
