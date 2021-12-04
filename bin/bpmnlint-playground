@@ -6,6 +6,26 @@ const fs = require('fs');
 const bpmnlintrcPath = path.join(process.cwd(), '.bpmnlintrc');
 
 
+function getLocalPluginName() {
+
+  try {
+    const pkg = require(process.cwd() + '/package.json');
+
+    const name = pkg.name;
+
+    const match = /^bpmnlint-plugin-(.*)$/.exec(name);
+
+    if (match) {
+      return match[1];
+    }
+  } catch (err) {
+    // ignore
+  }
+
+  return null;
+}
+
+
 async function run() {
 
   const argv = process.argv.slice(2);
@@ -19,19 +39,32 @@ async function run() {
   }
 
   if (!fs.existsSync(bpmnlintrcPath)) {
+
+    const pluginName = getLocalPluginName();
+
     console.error(`
   Cannot not find local .bpmnlintrc file, please create one:
 
     npx bpmnlint --init
 
   Refer to https://github.com/bpmn-io/bpmnlint#configuration for details.
+  `);
 
-  Alternatively, run this command in a bpmnlint-plugin folder:
+    if (pluginName) {
+      console.error(`
+  Alternatively, initialize a configuration based on <${pluginName}/recommended>:
+
+    echo '{ "extends": "plugin:${pluginName}/recommended" }' > .bpmnlintrc
+        `)
+    } else {
+      console.error(`
+  Alternatively, create a new bpmnlint-plugin first:
 
     npx create-bpmnlint-plugin my-plugin
 
   Refer to https://github.com/nikku/create-bpmnlint-plugin#usage for usage.
-  `);
+      `);
+    }
 
     return process.exit(1);
   }
