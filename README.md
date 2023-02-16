@@ -36,7 +36,7 @@ npx bpmnlint-playground
 Once started, the playground watches your local [`.bpmnlintrc` file](https://github.com/bpmn-io/bpmnlint#configuration), rebuilds it on change, and refreshes the view accordingly.
 
 
-## Resources
+## Related
 
 * [bpmnlint](https://github.com/bpmn-io/bpmnlint)
 * [bpmnlint-plugin-example](https://github.com/bpmn-io/bpmnlint-plugin-example)
