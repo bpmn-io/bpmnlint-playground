@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "description": "A bpmnlint playground",
   "bin": {
-    "bpmnlint-playground": "./bin/bpmnlint-playground"
+    "bpmnlint-playground": "./bin/cli.js"
   },
   "scripts": {
     "all": "run-s bundle",
