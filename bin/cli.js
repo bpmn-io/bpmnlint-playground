@@ -1,13 +1,18 @@
 #!/usr/bin/env node
 
-const path = require('path');
-const fs = require('fs');
+import path from 'node:path';
+import fs from 'node:fs';
 
 const bpmnlintrcPath = path.join(process.cwd(), '.bpmnlintrc');
 
-const colors = require('ansi-colors');
+import colors from 'ansi-colors';
 
-colors.enabled = require('color-support').hasBasic;
+import colorSupport from 'color-support';
+
+colors.enabled = colorSupport.hasBasic;
+
+
+import { run as runPlayground } from './playground.js';
 
 const {
   magenta,
@@ -15,10 +20,10 @@ const {
   grey
 } = colors;
 
-function getLocalPluginName() {
+async function getLocalPluginName() {
 
   try {
-    const pkg = require(process.cwd() + '/package.json');
+    const pkg = await import(process.cwd() + '/package.json');
 
     const name = pkg.name;
 
@@ -57,7 +62,7 @@ async function run() {
 
   if (!fs.existsSync(bpmnlintrcPath)) {
 
-    const pluginName = getLocalPluginName();
+    const pluginName = await getLocalPluginName();
 
     console.error(`
   Cannot not find local ${highlight('.bpmnlintrc')} file, please create one:
@@ -103,8 +108,6 @@ async function run() {
     }
 
   }
-
-  const { run: runPlayground } = require('./playground');
 
   console.log('Opening playground...');
 

@@ -2,6 +2,7 @@
   "name": "bpmnlint-playground",
   "version": "0.3.0",
   "description": "A bpmnlint playground",
+  "type": "module",
   "bin": {
     "bpmnlint-playground": "./bin/cli.js"
   },

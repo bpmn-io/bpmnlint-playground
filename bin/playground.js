@@ -1,12 +1,18 @@
-const path = require('path');
+import path from 'node:path';
+import url from 'node:url';
 
-const rollup = require('rollup');
-const loadRollupConfig = require('rollup/dist/loadConfigFile');
+import { watch as rollupWatch } from 'rollup';
 
-const exitHook = require('exit-hook');
+import {
+  loadConfigFile as loadRollupConfig
+} from 'rollup/dist/loadConfigFile.js';
+
+import exitHook from 'exit-hook';
 
 
-async function run(diagram) {
+const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+
+export async function run(diagram) {
   const rollupConfig = path.join(__dirname, '..', 'config', 'rollup.run-config.js');
 
   if (diagram) {
@@ -34,7 +40,7 @@ async function run(diagram) {
     }
   }));
 
-  const watcher = rollup.watch(watchOptions);
+  const watcher = rollupWatch(watchOptions);
 
   watcher.on('event', event => {
 
@@ -63,6 +69,3 @@ async function run(diagram) {
     watcher.close();
   });
 }
-
-
-module.exports.run = run;
