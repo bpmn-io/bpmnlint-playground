@@ -1,6 +1,7 @@
-import fs from 'fs';
-import path from 'path';
-import os from 'os';
+import fs from 'node:fs';
+import path from 'node:path';
+import os from 'node:os';
+import url from 'node:url';
 
 import exitHook from 'exit-hook';
 
@@ -11,6 +12,9 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 
 import bpmnlint from 'rollup-plugin-bpmnlint';
+
+const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+
 
 const publicDir = path.join(__dirname, '..', 'public');
 
