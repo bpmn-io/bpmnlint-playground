@@ -10,7 +10,8 @@
     "all": "run-s bundle",
     "bundle": "rollup -c",
     "start": "(cd example && npm install && npm start)",
-    "prepublishOnly": "run-s bundle"
+    "prepublishOnly": "run-s bundle",
+    "test": "echo 'no tests yet <3' && exit 0"
   },
   "author": {
     "name": "Nico Rehwaldt",
