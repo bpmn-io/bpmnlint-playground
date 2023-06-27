@@ -6,6 +6,12 @@ All notable changes to [bpmnlint-playground](https://github.com/bpmn-io/bpmnlint
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.5.0
+
+* `DEPS`: update to `bpmn-js@13`
+* `DEPS`: update to `bpmnlint@8`
+* `DEPS`: update various utility dependencies
+
 ## 0.4.0
 
 * `CHORE`: turn into module
