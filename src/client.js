@@ -1,6 +1,6 @@
 import lintModule from 'bpmn-js-bpmnlint';
 
-import BpmnModeler from 'bpmn-js/dist/bpmn-modeler.production.min.js'
+import BpmnModeler from 'bpmn-js/lib/Modeler';
 
 import defaultDiagramXML from '../diagrams/example.bpmn';
 
