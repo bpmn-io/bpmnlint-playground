@@ -17,7 +17,7 @@
   "license": "MIT",
   "devDependencies": {
     "bpmnlint": "^9.0.0",
-    "del-cli": "^4.0.1",
+    "del-cli": "^5.0.0",
     "install-local": "^3.0.1",
     "npm-run-all": "^4.1.5"
   },
