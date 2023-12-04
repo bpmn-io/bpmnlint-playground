@@ -17,6 +17,9 @@
     "name": "Nico Rehwaldt",
     "url": "https://github.com/nikku"
   },
+  "engines": {
+    "node": ">= 16"
+  },
   "license": "MIT",
   "devDependencies": {
     "bpmn-js": "^15.0.0",
