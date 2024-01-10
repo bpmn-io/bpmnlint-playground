@@ -22,9 +22,9 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "bpmn-js": "^16.0.0",
-    "bpmn-js-bpmnlint": "^0.21.0",
-    "bpmnlint": "^9.2.0",
+    "bpmn-js": "^16.3.2",
+    "bpmn-js-bpmnlint": "^0.22.2",
+    "bpmnlint": "^10.0.0",
     "downloadjs": "^1.4.7",
     "file-drops": "^0.5.0",
     "npm-run-all": "^4.1.2",
