@@ -27,7 +27,7 @@
     "bpmnlint": "^10.0.0",
     "downloadjs": "^1.4.7",
     "file-drops": "^0.5.0",
-    "npm-run-all": "^4.1.2",
+    "npm-run-all2": "^5.0.0",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-string": "^3.0.0"
   },
