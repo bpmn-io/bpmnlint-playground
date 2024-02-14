@@ -21,7 +21,7 @@ During plug-in development the playground can be useful to test rules in action:
 ```sh
 # create a plugin with the name <foo>
 npx create-bpmnlint-plugin foo
-cd foo
+cd bpmnlint-plugin-foo
 
 # install dependencies
 npm install
