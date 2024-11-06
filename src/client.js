@@ -27,9 +27,6 @@ function run(bpmnlintConfig) {
     linting: {
       bpmnlint: bpmnlintConfig,
       active: getUrlParam('linting')
-    },
-    keyboard: {
-      bindTo: document
     }
   });
 
