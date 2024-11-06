@@ -9,7 +9,7 @@
   "scripts": {
     "all": "run-s bundle",
     "bundle": "rollup -c --bundleConfigAsCjs",
-    "start": "(cd example && npm install && npm start)",
+    "start": "(cd example && npm start)",
     "prepublishOnly": "run-s bundle",
     "test": "echo 'no tests yet <3' && exit 0"
   },
@@ -46,5 +46,8 @@
     "bin",
     "config",
     "public"
+  ],
+  "workspaces": [
+    "example"
   ]
 }

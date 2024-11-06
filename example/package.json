@@ -8,23 +8,19 @@
     "url": "https://github.com/nikku"
   },
   "scripts": {
-    "postinstall": "install-local",
     "all": "run-s clean scaffold start",
     "clean": "npm uninstall bpmnlint-plugin-local && rm -rf bpmnlint-plugin-local",
-    "scaffold": "npx create-bpmnlint-plugin local && npm install bpmnlint-plugin-local@./bpmnlint-plugin-local && install-local",
+    "scaffold": "npx create-bpmnlint-plugin local && npm install bpmnlint-plugin-local@./bpmnlint-plugin-local",
     "start": "bpmnlint-playground simple.bpmn"
   },
   "license": "MIT",
   "devDependencies": {
     "bpmnlint": "^10.0.0",
     "del-cli": "^6.0.0",
-    "install-local": "^3.0.1",
-    "npm-run-all2": "^7.0.0"
+    "npm-run-all2": "^7.0.0",
+    "bpmnlint-playground": ".."
   },
   "dependencies": {
     "bpmnlint-plugin-local": "file:bpmnlint-plugin-local"
-  },
-  "localDependencies": {
-    "bpmnlint-playground": ".."
   }
 }
