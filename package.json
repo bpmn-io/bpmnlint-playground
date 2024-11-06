@@ -18,7 +18,7 @@
     "url": "https://github.com/nikku"
   },
   "engines": {
-    "node": ">= 16"
+    "node": ">= 20"
   },
   "license": "MIT",
   "devDependencies": {
