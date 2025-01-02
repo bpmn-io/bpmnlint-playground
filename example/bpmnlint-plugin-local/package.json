@@ -12,7 +12,7 @@
     "plugin"
   ],
   "devDependencies": {
-    "bpmnlint": "^10.0.0",
+    "bpmnlint": "^11.0.0",
     "chai": "^4.2.0",
     "mocha": "^10.0.0"
   },
