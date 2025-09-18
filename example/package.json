@@ -17,7 +17,7 @@
   "devDependencies": {
     "bpmnlint": "^11.0.0",
     "bpmnlint-playground": "..",
-    "del-cli": "^6.0.0",
+    "del-cli": "^7.0.0",
     "npm-run-all2": "^8.0.0"
   },
   "dependencies": {
