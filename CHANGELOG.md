@@ -6,6 +6,14 @@ All notable changes to [bpmnlint-playground](https://github.com/bpmn-io/bpmnlint
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.9.0
+
+* `DEPS`: update to `bpmn-js@18.9.1`
+* `DEPS`: update to `bpmnlint@11.7.2`
+* `DEPS`: update to `bpmn-js-bpmnlint@0.23.0`
+* `DEPS`: update to `file-drops@0.6.1`
+* `DEPS`: update rollup*
+
 ## 0.8.0
 
 * `DEPS`: update to `bpmn-js@18`
