@@ -18,7 +18,7 @@
     "bpmnlint": "^11.0.0",
     "bpmnlint-playground": "..",
     "del-cli": "^7.0.0",
-    "npm-run-all2": "^8.0.0"
+    "npm-run-all2": "^8.0.4"
   },
   "dependencies": {
     "bpmnlint-plugin-local": "file:bpmnlint-plugin-local"
