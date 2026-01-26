@@ -10,6 +10,7 @@ import serve from 'rollup-plugin-serve';
 
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
 
 import bpmnlint from 'rollup-plugin-bpmnlint';
 
@@ -43,6 +44,7 @@ export default {
   plugins: [
     resolve(),
     commonjs(),
+    json(),
     bpmnlint(),
     serve({
       verbose: false,
