@@ -11,7 +11,7 @@ import download from 'downloadjs';
 
 function loadConfig() {
   return import('./bpmnlint-config.js').catch(err => {
-    console.log(err);
+    console.error('Failed to load bpmnlint configuration', err);
 
     return {};
   });
@@ -30,8 +30,16 @@ function run(bpmnlintConfig) {
     }
   });
 
-  loadDiagram().then(diagramXML => modeler.importXML(diagramXML)).catch(err => {
-    window.alert(err.message);
+  var importDiagram = function(xml) {
+    return modeler.importXML(xml).catch(err => {
+      window.alert(err.message);
+
+      throw err;
+    });
+  };
+
+  loadDiagram().then(importDiagram).catch(err => {
+    console.error('Failed to open diagram', err);
   });
 
   modeler.on('linting.toggle', function(event) {
@@ -48,15 +56,17 @@ function run(bpmnlintConfig) {
   });
 
   var dndHandler = fileDrop('Drop BPMN Diagram here.', function(files) {
-    modeler.importXML(files[0].contents);
+    importDiagram(files[0].contents).catch(err => {
+      console.error('Failed to open diagram', err);
+    });
   });
 
   document.querySelector('#download-button').addEventListener('click', function(event) {
 
-    modeler.saveXML({ format: true }, function(err, xml) {
-      if (!err) {
-        download(xml, 'diagram.bpmn', 'application/xml');
-      }
+    modeler.saveXML({ format: true }).then(function(result) {
+      download(result.xml, 'diagram.bpmn', 'application/xml');
+    }).catch(err => {
+      console.error('Failed to save diagram', err);
     });
   });
 
