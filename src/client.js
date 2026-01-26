@@ -17,7 +17,12 @@ function loadConfig() {
   });
 }
 
-function run(bpmnlintConfig) {
+function run(_bpmnlintConfig) {
+
+  var {
+    moddleExtensions,
+    ...bpmnlintConfig
+  } = _bpmnlintConfig;
 
   var modeler = new BpmnModeler({
     container: '#canvas',
@@ -27,7 +32,8 @@ function run(bpmnlintConfig) {
     linting: {
       bpmnlint: bpmnlintConfig,
       active: getUrlParam('linting')
-    }
+    },
+    moddleExtensions
   });
 
   var importDiagram = function(xml) {
