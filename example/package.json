@@ -21,6 +21,7 @@
     "npm-run-all2": "^8.0.4"
   },
   "dependencies": {
-    "bpmnlint-plugin-local": "file:bpmnlint-plugin-local"
+    "bpmnlint-plugin-local": "file:bpmnlint-plugin-local",
+    "spell-moddle": "file:spell-moddle"
   }
 }

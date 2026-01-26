@@ -4,6 +4,10 @@
     "plugin:local/recommended"
   ],
   "rules": {
-    "local/no-manual-task": "warn"
+    "local/no-manual-task": "warn",
+    "local/magic-start-event": "error"
+  },
+  "moddleExtensions": {
+    "spell": "spell-moddle/resources/spell.json"
   }
 }
