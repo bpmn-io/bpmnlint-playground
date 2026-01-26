@@ -6,6 +6,12 @@ All notable changes to [bpmnlint-playground](https://github.com/bpmn-io/bpmnlint
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.9.1
+
+* `FIX`: correct file download not working
+* `DEPS`: update to `file-drops@0.7.0`
+* `DEPS`: update to `bpmnlint@11.7.3`
+
 ## 0.9.0
 
 * `DEPS`: update to `bpmn-js@18.9.1`
