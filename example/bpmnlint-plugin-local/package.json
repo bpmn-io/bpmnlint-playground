@@ -17,7 +17,8 @@
     "mocha": "^11.0.0"
   },
   "dependencies": {
-    "bpmnlint-utils": "^1.0.2"
+    "bpmnlint-utils": "^1.0.2",
+    "spell-moddle": "file:../spell-moddle"
   },
   "files": [
     "rules",
