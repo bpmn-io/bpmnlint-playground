@@ -4,7 +4,7 @@
   "description": "A bpmnlint playground",
   "type": "module",
   "bin": {
-    "bpmnlint-playground": "./bin/cli.js"
+    "bpmnlint-playground": "bin/cli.js"
   },
   "scripts": {
     "all": "run-s bundle",
