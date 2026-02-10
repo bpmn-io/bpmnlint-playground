@@ -6,6 +6,11 @@ All notable changes to [bpmnlint-playground](https://github.com/bpmn-io/bpmnlint
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.10.0
+
+* `FEAT`: use declared `moddleExtensions` ([#37](https://github.com/bpmn-io/bpmnlint-playground/pull/37))
+* `FEAT`: allow json bundling ([#37](https://github.com/bpmn-io/bpmnlint-playground/pull/37))
+
 ## 0.9.1
 
 * `FIX`: correct file download not working
