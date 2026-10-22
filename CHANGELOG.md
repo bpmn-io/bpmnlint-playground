@@ -6,6 +6,8 @@ All notable changes to [bpmnlint-playground](https://github.com/bpmn-io/bpmnlint
 
 ___Note:__ Yet to be released changes appear here._
 
+* `DEPS`: update to `exit-hook@5.1.0`
+
 * `DEPS`: update to `@rollup/plugin-commonjs@29.0.3`
 
 ## 1.0.1
